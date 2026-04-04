@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -307,8 +307,19 @@ Invite: "If opportunity knocked, would you pass on it?"
 Social Proof: "You're a top producer. I only recruit LeBron James types to take their talents to South Beach."
 
 "I love my broker"
-Acknowledge: "That's wonderful! Tell me, what do you love so much about your broker?"
-Reframe: "Loyalty is great — but never be so loyal you neglect your own best interest."
+Acknowledge: "That's wonderful — and I mean that genuinely. Tell me, what do you love so much about your broker? What are they doing right?"
+THEM: [They explain]
+Acknowledge: "I hear you. Loyalty like that is rare and it's actually a quality I admire. That says a lot about you."
+
+OPTION 1 — Vulnerability Reframe:
+Reframe: "Loyalty is beautiful. But never be SO loyal you neglect your own best interest. Your broker loves you because you produce. But what happens if they get acquired? Sold to Redfin? Go under? You're vulnerable."
+
+OPTION 2 — Landlord/Tenant Reframe:
+Reframe: "I appreciate that — I really do. But let me paint you a picture. Right now, your broker is the landlord and you're the tenant. You've got a great deal — paying $900 when it should be $1,500. So you don't ask for new countertops, upgraded floors, or fresh paint... because you're afraid they'll raise the rent. Sound familiar?"
+Reframe: "Let me ask you this — do you have any ownership in that office? Any equity stake? Any stock?"
+THEM: No
+Reframe: "Then what if instead of being a great tenant, you became a stockholder and equity owner? At the very least, when you bring this up to your current broker, the worst that happens is they give you a raise — a higher split. But at best? You build something that's actually yours."
+
 Invite: "If you love them, bring them with you. They might be praying for this opportunity."
 Social Proof: "Anita Cruz came over, became director of 3 states, and now has vacations and balance."
 
@@ -371,22 +382,14 @@ function addTyping(){
 function removeTyping(){const t=document.getElementById('typingMsg');if(t)t.remove();}
 
 function formatResponse(text){
-  // Strip all markdown headers
   text=text.replace(/^#{1,6}\s*/gm,'');
-  // Strip dividers
   text=text.replace(/^[-=*]{3,}$/gm,'');
-  // Bold
   text=text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
-  // Section labels from ===
   text=text.replace(/^[=]{2,}\s*(.*?)\s*[=]{2,}$/gm,'<span class="sh">$1</span>');
-  // YOU/THEM/IF tags
   text=text.replace(/\b(YOU|THEM|IF YES|IF NO|IF RESIST|DIRECT|SOFTER|ACKNOWLEDGE|REFRAME|INVITE|SOCIAL PROOF|NOTE|CLOSE|BAMFAM):/g,'<span class="tag">$1:</span>');
-  // Script blocks
   text=text.replace(/"([^"]{15,})"/g,'<div class="script-block">"$1"</div>');
-  // Lists
   text=text.replace(/^[-•]\s(.+)$/gm,'<li>$1</li>');
   text=text.replace(/(<li>[\s\S]*?<\/li>)+/g,m=>'<ul>'+m+'</ul>');
-  // Paragraphs
   text=text.replace(/\n\n/g,'</p><p>');
   text=text.replace(/\n/g,'<br>');
   return '<p>'+text+'</p>';
