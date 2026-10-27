@@ -1,0 +1,7 @@
+# Used by `wrangler pages dev` only.
+# pages_build_output_dir is intentionally omitted. Setting it makes this file
+# the production source of truth and can override dashboard settings, including
+# environment variables. Set the build output (`public`) and ANTHROPIC_API_KEY
+# in the Cloudflare Pages dashboard. See DEPLOY.md.
+name = "byrdhouse-pro"
+compatibility_date = "2026-10-23"
